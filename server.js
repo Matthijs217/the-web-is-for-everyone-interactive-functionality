@@ -23,8 +23,49 @@ app.engine('liquid', engine.express());
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 
+const vacaturesResponse = await fetch('https://fdnd-agency.directus.app/items/dda_agencies/?fields=id,title,vacancies.*')  
+const vacaturesResponseJSON = await vacaturesResponse.json()
 
-console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
+// Maak een GET route voor de index (meestal doe je dit in de root, als /)
+app.get('/', async function (request, response) {
+  // Render index.liquid uit de Views map
+  // Geef hier eventueel data aan mee
+  response.render('vacatures.liquid', {vacatures: vacaturesResponseJSON.data})
+})
+
+// Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
+// Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
+app.post('/', async function (request, response) {
+ // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
+ // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
+ response.redirect(303, '/')
+})
+
+app.get('/vacature/:id', async function (request, response) {
+ 
+ const vacature = request.params.id
+ const vacaturesResponse = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies_vacancies/?filter={"id":"${vacature}"}`)
+ const vacaturesResponseJSON = await vacaturesResponse.json()
+ 
+ // Geef hier eventueel data aan mee
+ response.render('vacature.liquid', { vacatures: vacaturesResponseJSON.data[0]});
+})
+
+app.get('/toevoegen', async function (request, response) {
+
+ response.render('toevoegen.liquid')
+})
+
+
+app.post('/toevoegen', async function (request, response) {
+ console.log("gepost")
+ console.log(request.body.name);
+ response.redirect(303, '/')
+})
+
+app.use((request, response, next) => {
+ response.render('404.liquid');
+})
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
