@@ -1,0 +1,62 @@
+{% render 'partials/head.liquid', title: 'Vacatures' %}
+
+{% render 'partials/header.liquid' %}
+
+<aside>
+    <a href="/vacatures">
+        <img src="assets/arrow-left.svg" alt="arrow">
+        terug naar home
+    </a>
+    <h1>Vacatures</h1>
+    <dd>Verslim je carrière bij de beste digitale bureaus van Nederland. Pak je rol als developer of designer,
+        researcher, als scrum master of marketeer, als strateeg. Start of groei door – en laat zien wat je kan.</dd>
+</aside>
+
+<form>
+    <div class="inputbox">
+        <label for="search">Zoek vacatures</label>
+        <input type="text" id="search" name="search">
+    </div>
+    <div class="filter-btns">
+        <button>
+            <p>provincie</p>
+            <span><img src="assets/plus.svg"></span>
+        </button>
+        <button>
+            <p>soort</p>
+            <span><img src="assets/plus.svg"></span>
+        </button>
+        <button>
+            <p>uren</p>
+            <span><img src="assets/plus.svg"></span>
+        </button>
+        <button>
+            <p>voertaal</p>
+            <span><img src="assets/plus.svg"></span>
+        </button>
+    </div>
+</form>
+
+<main class="vacancies-container">
+    <ul class="vacancies">
+        {% for agency in vacatures %}
+        {% for vacature in agency.vacancies %}
+        <li>
+            <h4>{{ vacature.title }}</h4>
+            <div>
+                <span>ENG & NL</span>
+                <span class="agency-title">{{  agency.title|title }}</span>
+                <span>{{ vacature.hours }} uur</span>
+                <span>{{ vacature.locatie }}</span>
+            </div>
+            <a href="vacature/{{ vacature.id }}">bekijken <img src="assets/blue-arrow-up.svg"></a>
+        </li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+    <a class="add-vacancie" href="/toevoegen">vacature toevoegen
+        <img src="assets/plus.svg" alt="addicon">
+    </a>
+</main>
+
+{% render 'partials/footer.liquid' %}
