@@ -23,12 +23,11 @@ app.engine('liquid', engine.express());
 // Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
 app.set('views', './views')
 
-const vacaturesResponse = await fetch('https://fdnd-agency.directus.app/items/dda_agencies/?fields=id,title,vacancies.*')  
-const vacaturesResponseJSON = await vacaturesResponse.json()
-
 // Maak een GET route voor de index (meestal doe je dit in de root, als /)
 app.get('/', async function (request, response) {
-  // Render index.liquid uit de Views map
+  const vacaturesResponse = await fetch('https://fdnd-agency.directus.app/items/dda_agencies/?fields=id,title,vacancies.*')  
+  const vacaturesResponseJSON = await vacaturesResponse.json()
+    // Render index.liquid uit de Views map
   // Geef hier eventueel data aan mee
   response.render('vacatures.liquid', {vacatures: vacaturesResponseJSON.data})
 })
@@ -61,7 +60,7 @@ app.post('/toevoegen', async function (request, response) {
     await fetch('https://fdnd-agency.directus.app/items/dda_agencies_vacancies', {
       method: 'POST',
       body: JSON.stringify({
-        titel: request.body.title,
+        title: request.body.title,
         language: request.body.language,
         company: request.body.company,
         hours: request.body.hours,
@@ -78,7 +77,7 @@ app.post('/toevoegen', async function (request, response) {
     console.log(request.body.company);
     console.log(request.body.hours);
     console.log(request.body.location);
-    response.redirect(303, '/')
+    response.redirect(303, '/');
 })
 
 app.use((request, response, next) => {

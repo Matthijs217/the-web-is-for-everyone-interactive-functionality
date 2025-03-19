@@ -319,4 +319,10 @@ footer {
 form {
     display: flex;
     flex-direction: column;
+    & .submit {
+        align-self: center;
+        padding: var(--spacing-16);
+        border: var(--border);
+        appearance: none;
+    }
 }
