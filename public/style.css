@@ -326,3 +326,27 @@ form {
         appearance: none;
     }
 }
+
+.succes-box {
+    position: fixed;
+    bottom: 10vh;
+    left: 2vw;
+    width: max-content;
+    background-color: var(--white);
+    box-shadow: 0px 0px 20px var(--black);
+    padding: var(--spacing-12);
+    border-radius: 1em;
+    opacity: 0;
+    transition: opacity .7s ease;
+    & h6 {
+        color: green;
+    }
+    &.show {
+        opacity: 1;
+    }
+    &.fade-out {
+        display: none;
+        opacity: 0;
+    }
+}
+
