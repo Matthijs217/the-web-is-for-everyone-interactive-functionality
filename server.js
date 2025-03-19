@@ -29,7 +29,7 @@ app.get('/', async function (request, response) {
   const vacaturesResponseJSON = await vacaturesResponse.json()
     // Render index.liquid uit de Views map
   // Geef hier eventueel data aan mee
-  response.render('vacatures.liquid', {vacatures: vacaturesResponseJSON.data})
+  response.render('vacatures.liquid', {vacatures: vacaturesResponseJSON.data, succes_message: request.query.succes });
 })
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
@@ -70,14 +70,7 @@ app.post('/toevoegen', async function (request, response) {
         'Content-Type': 'application/json;charset=UTF-8'
       }
     });
-
-    console.log("gepost")
-    console.log(request.body.title);
-    console.log(request.body.language);
-    console.log(request.body.agency_id);
-    console.log(request.body.hours);
-    console.log(request.body.location);
-    response.redirect(303, '/');
+    response.redirect(303, '/?succes=Vacature is toegevoegd!');
 })
 
 app.use((request, response, next) => {
