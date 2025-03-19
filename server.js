@@ -62,7 +62,7 @@ app.post('/toevoegen', async function (request, response) {
       body: JSON.stringify({
         title: request.body.title,
         language: request.body.language,
-        company: request.body.company,
+        agency_id: request.body.agency_id,
         hours: request.body.hours,
         locatie: request.body.location
       }),
@@ -74,7 +74,7 @@ app.post('/toevoegen', async function (request, response) {
     console.log("gepost")
     console.log(request.body.title);
     console.log(request.body.language);
-    console.log(request.body.company);
+    console.log(request.body.agency_id);
     console.log(request.body.hours);
     console.log(request.body.location);
     response.redirect(303, '/');
