@@ -59,6 +59,14 @@
     <a class="add-vacancie" href="/toevoegen">vacature toevoegen
         <img src="assets/plus.svg" alt="addicon">
     </a>
+    {% if succes_message %}
+        <div class="succes-box">
+            <h6>Succes!</h6>
+            <p class="succes-message">{{ succes_message }}</p>
+        </div>
+    {% endif %}
 </main>
+
+
 
 {% render 'partials/footer.liquid' %}
