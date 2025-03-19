@@ -58,9 +58,27 @@ app.get('/toevoegen', async function (request, response) {
 
 
 app.post('/toevoegen', async function (request, response) {
- console.log("gepost")
- console.log(request.body.name);
- response.redirect(303, '/')
+    await fetch('https://fdnd-agency.directus.app/items/dda_agencies_vacancies', {
+      method: 'POST',
+      body: JSON.stringify({
+        titel: request.body.title,
+        language: request.body.language,
+        company: request.body.company,
+        hours: request.body.hours,
+        locatie: request.body.location
+      }),
+      headers: {
+        'Content-Type': 'application/json;charset=UTF-8'
+      }
+    });
+
+    console.log("gepost")
+    console.log(request.body.title);
+    console.log(request.body.language);
+    console.log(request.body.company);
+    console.log(request.body.hours);
+    console.log(request.body.location);
+    response.redirect(303, '/')
 })
 
 app.use((request, response, next) => {

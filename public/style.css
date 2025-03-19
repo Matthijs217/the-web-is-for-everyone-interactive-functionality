@@ -311,3 +311,12 @@ footer {
     }
 }
 
+.titel {
+    text-align: center;
+    padding: var(--spacing-16);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}

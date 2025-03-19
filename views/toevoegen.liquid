@@ -1,8 +1,24 @@
 {% render 'partials/head.liquid' %}
 {% render 'partials/header.liquid' %}
 
-<form action="" method="post">
-    <input type="text" name="name">
+<h1 class="titel">vacature toevoegen</h1>
+<form action="/toevoegen" method="post">
+
+    <label for="titel">titel</label>
+    <input type="text" name="titel">
+
+    <label for="language">language</label>
+    <input type="text" name="language">
+
+    <label for="company">company</label>
+    <input type="text" name="company">
+
+    <label for="hours">hours</label>
+    <input type="text" name="hours">
+
+    <label for="location">location</label>
+    <input type="text" name="location">
+
     <button>submit</button>
 </form>
 

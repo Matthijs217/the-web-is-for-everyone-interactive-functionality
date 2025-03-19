@@ -52,6 +52,8 @@
             <a href="vacature/{{ vacature.id }}">bekijken <img src="assets/blue-arrow-up.svg"></a>
         </li>
         {% endfor %}
+        {%  else %}
+        <p>Er zijn op dit moment geen vacatures beschikbaar...</p>
         {% endfor %}
     </ul>
     <a class="add-vacancie" href="/toevoegen">vacature toevoegen
