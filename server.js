@@ -25,22 +25,27 @@ app.set('views', './views')
 
 // Maak een GET route voor de index (meestal doe je dit in de root, als /)
 app.get('/', async function (request, response) {
-  const vacaturesResponse = await fetch('https://fdnd-agency.directus.app/items/dda_agencies/?fields=id,title,vacancies.*')  
-  const vacaturesResponseJSON = await vacaturesResponse.json()
+  let vacaturesResponseJSON
 
   const hours = request.query.hours
   console.log(hours)
 
-
-  if (hours === "16") {
-    console.log('16 uur')
-    vacaturesResponseJSON.data = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies_vacancies?filter={hours:${hours}}`) 
+  if (hours === "16" || hours === "32") {
+    const vacaturesResponse = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies?fields=id,title,vacancies.*&filter={%22vacancies%22:{%22hours%22:${hours}}}`)
+    vacaturesResponseJSON = await vacaturesResponse.json()
+    console.log('16 uur word getoond')
   } else {
+    const vacaturesResponse = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies?fields=id,title,vacancies.*`)
+    vacaturesResponseJSON = await vacaturesResponse.json()
     console.log('niet 16 uur')
+    console.log('Vacatures zonder filter:', vacaturesResponseJSON);
   }
+
+  console.log('Hours parameter:', hours);
 
   response.render('vacatures.liquid', {vacatures: vacaturesResponseJSON.data, succes_message: request.query.succes });
 })
+
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
@@ -126,7 +131,7 @@ app.post(…, async function (request, response) {
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
 // Lokaal is dit poort 8000; als deze applicatie ergens gehost wordt, waarschijnlijk poort 80
-app.set('port', process.env.PORT || 8000)
+app.set('port', process.env.PORT || 8001)
 
 // Start Express op, gebruik daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
