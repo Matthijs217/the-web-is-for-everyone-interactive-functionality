@@ -119,45 +119,50 @@ form {
         width: 100%;
         display: flex;
         flex-direction: column;
+        & input {
+            width: 75vw;
+            outline: none;
+            border: 1px solid transparent;
+            border-bottom: var(--border);
+            padding: var(--spacing-12);
+            @media (min-width: 550px){
+                width: 40vw;
+            }
+            @media (min-width: 850px){
+                width: 30vw;
+            }
+        }
     }
     & .filter-btns {
         display: flex;
         gap: var(--spacing-16);
         flex-wrap: wrap;
+        & .select-container {
+            display: flex;
+            & select {
+                display: flex;
+                width: max-content;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--white);
+                appearance: none;
+                text-align: center;
+                font-family: var(--secondary-font);
+                border: var(--border);
+                padding: 5px;
+            }
+            & span {
+                display: flex;
+                align-items: center;
+                border: var(--border);
+                padding: var(--spacing-8);
+            }
+        }
+        
+        
         @media (min-width: 850px){
             flex-wrap: nowrap;
         }
-    }
-    & input {
-        width: 75vw;
-        outline: none;
-        border: 1px solid transparent;
-        border-bottom: var(--border);
-        padding: var(--spacing-12);
-        @media (min-width: 550px){
-            width: 40vw;
-        }
-        @media (min-width: 850px){
-            width: 30vw;
-        }
-    }
-    & button {
-        display: flex;
-        width: max-content;
-        justify-content: center;
-        align-items: center;
-        background-color: var(--white);
-        border: var(--border);
-    }
-    & p {
-        padding: var(--spacing-12);
-        font-family: var(--secondary-font);
-        font-size: .75rem;
-        text-transform: uppercase;
-    }
-    & span {
-        border-left: var(--border);
-        padding: var(--spacing-8);
     }
     @media (min-width: 850px) {
         flex-direction: row;

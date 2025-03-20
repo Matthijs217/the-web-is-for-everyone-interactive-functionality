@@ -12,28 +12,65 @@
         researcher, als scrum master of marketeer, als strateeg. Start of groei door – en laat zien wat je kan.</dd>
 </aside>
 
-<form>
+<form method="get" action="/">
     <div class="inputbox">
         <label for="search">Zoek vacatures</label>
         <input type="text" id="search" name="search">
     </div>
     <div class="filter-btns">
-        <button>
-            <p>provincie</p>
+        <div class="select-container">
+            <select class="select-btn" name="provincie">
+                <option value="">provincie</option>
+                <option value="Noord-Holland">Noord-Holland</option>
+                <option value="Zuid-Holland">Zuid-Holland</option>
+                <option value="Groningen">Groningen</option>
+                <option value="Friesland">Friesland</option>
+                <option value="Drenthe">Drenthe</option>
+                <option value="Overijssel">Overijssel</option>
+                <option value="Flevoland">Flevoland</option>
+                <option value="Gelderland">Gelderland</option>
+                <option value="Utrecht">Utrecht</option>
+                <option value="Limburg">Limburg</option>
+                <option value="Noord-Brabant">Noord-Brabant</option>
+                <option value="Zeeland">Zeeland</option>
+            </select>
             <span><img src="assets/plus.svg"></span>
-        </button>
-        <button>
-            <p>soort</p>
+        </div>
+
+        <div class="select-container">
+            <select name="soort">
+                <option value="">soort</option>
+                <option value="vacature">vacature</option>
+                <option value="stage">stage</option>
+                <span><img src="assets/plus.svg"></span>
+            </select>
             <span><img src="assets/plus.svg"></span>
-        </button>
-        <button>
-            <p>uren</p>
+        </div>
+
+        <div class="select-container">
+            <select name="uren">
+                <option value="">uren</option>
+                <option value="vacature">32-40</option>
+                <option value="stage">24-32</option>
+                <option value="stage">16-24</option>
+                <option value="stage">anders</option>
+                <span><img src="assets/plus.svg"></span>
+            </select>
             <span><img src="assets/plus.svg"></span>
-        </button>
-        <button>
-            <p>voertaal</p>
+        </div>
+
+        <div class="select-container">
+            <select name="voertaal">
+                <option value="">voertaal</option>
+                <option value="vacature">nl</option>
+                <option value="stage">eng</option>
+                <option value="stage">eng & nl</option>
+                <span><img src="assets/plus.svg"></span>
+            </select>
             <span><img src="assets/plus.svg"></span>
-        </button>
+        </div>
+
+        <button type="submit">Submit</button>
     </div>
 </form>
 
@@ -45,14 +82,14 @@
             <h4>{{ vacature.title }}</h4>
             <div>
                 <span>ENG & NL</span>
-                <span class="agency-title">{{  agency.title|title }}</span>
+                <span class="agency-title">{{ agency.title|title }}</span>
                 <span>{{ vacature.hours }} uur</span>
                 <span>{{ vacature.locatie }}</span>
             </div>
             <a href="vacature/{{ vacature.id }}">bekijken <img src="assets/blue-arrow-up.svg"></a>
         </li>
         {% endfor %}
-        {%  else %}
+        {% else %}
         <p>Er zijn op dit moment geen vacatures beschikbaar...</p>
         {% endfor %}
     </ul>
@@ -60,10 +97,10 @@
         <img src="assets/plus.svg" alt="addicon">
     </a>
     {% if succes_message %}
-        <div class="succes-box">
-            <h6>Succes!</h6>
-            <p class="succes-message">{{ succes_message }}</p>
-        </div>
+    <div class="succes-box">
+        <h6>Succes!</h6>
+        <p class="succes-message">{{ succes_message }}</p>
+    </div>
     {% endif %}
 </main>
 
