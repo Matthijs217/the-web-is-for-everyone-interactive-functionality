@@ -29,9 +29,14 @@ app.get('/', async function (request, response) {
   const vacaturesResponseJSON = await vacaturesResponse.json()
 
   const hours = request.query.hours
+  console.log(hours)
 
-  if (hours === 16) {
-    vacaturesResponseJSON.data = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies/?fields=id,title,vacancies.*&filter[vacancies][hours][_eq]=$request.query.hours`) 
+
+  if (hours === "16") {
+    console.log('16 uur')
+    vacaturesResponseJSON.data = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies_vacancies?filter={hours:${hours}}`) 
+  } else {
+    console.log('niet 16 uur')
   }
 
   response.render('vacatures.liquid', {vacatures: vacaturesResponseJSON.data, succes_message: request.query.succes });
