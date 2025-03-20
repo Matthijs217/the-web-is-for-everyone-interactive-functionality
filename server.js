@@ -27,8 +27,13 @@ app.set('views', './views')
 app.get('/', async function (request, response) {
   const vacaturesResponse = await fetch('https://fdnd-agency.directus.app/items/dda_agencies/?fields=id,title,vacancies.*')  
   const vacaturesResponseJSON = await vacaturesResponse.json()
-    // Render index.liquid uit de Views map
-  // Geef hier eventueel data aan mee
+
+  const hours = request.query.hours
+
+  if (hours === 16) {
+    vacaturesResponseJSON.data = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies/?fields=id,title,vacancies.*&filter[vacancies][hours][_eq]=$request.query.hours`) 
+  }
+
   response.render('vacatures.liquid', {vacatures: vacaturesResponseJSON.data, succes_message: request.query.succes });
 })
 
