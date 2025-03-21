@@ -110,7 +110,7 @@ aside {
     }
 }
 
-form {
+.filter-button-container {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-24);
@@ -163,9 +163,6 @@ form {
         @media (min-width: 850px){
             flex-wrap: nowrap;
         }
-    }
-    @media (min-width: 850px) {
-        flex-direction: row;
     }
 }
 
@@ -324,14 +321,24 @@ footer {
     padding: var(--spacing-16);
 }
 
-form {
+.form-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--secondary-font);
+    padding: var(--spacing-32) var(--spacing-12);
+    border-top: var(--border);
     & .submit {
         align-self: center;
+        margin-top: var(--spacing-24);
         padding: var(--spacing-16);
         border: var(--border);
         appearance: none;
+    }
+    & input {
+        height: auto;
+        width: 60vw;
     }
 }
 
@@ -341,13 +348,18 @@ form {
     left: 2vw;
     width: max-content;
     background-color: var(--white);
-    box-shadow: 0px 0px 20px var(--black);
     padding: var(--spacing-12);
-    border-radius: 1em;
     opacity: 0;
     transition: opacity .7s ease;
+    border: var(--border);
     & h6 {
         color: green;
+        font-family: var(--primary-font);
+        font-size: 1.25rem;
+    }
+    & p {
+        font-family: var(--secondary-font);
+        font-size: 0.85rem;
     }
     &.show {
         opacity: 1;
