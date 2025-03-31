@@ -71,7 +71,7 @@ app.get('/toevoegen', async function (request, response) {
 })
 
 
-app.post('/toevoegen', async function (request, response) {
+app.post('/', async function (request, response) {
     await fetch('https://fdnd-agency.directus.app/items/dda_agencies_vacancies', {
       method: 'POST',
       body: JSON.stringify({

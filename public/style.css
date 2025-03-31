@@ -172,10 +172,29 @@ aside {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
         margin: var(--spacing-32);
+        & summary {
+            font-family: var(--secondary-font);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        summary::before {
+            content: '+';
+            margin-right: 0.25em;
+            transition: transform 0.3s ease;
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 24px;
+        }
         & img {
             padding-left: var(--spacing-8);
         }
+    }
+    details[open] summary::before {
+        content: '+';  
+        transform: rotate(45deg);
     }
 }
 
@@ -322,23 +341,32 @@ footer {
 }
 
 .form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: var(--secondary-font);
     padding: var(--spacing-32) var(--spacing-12);
-    border-top: var(--border);
+    border: var(--border);
+    background-color: white;
     & .submit {
         align-self: center;
         margin-top: var(--spacing-24);
         padding: var(--spacing-16);
         border: var(--border);
         appearance: none;
+        & .loading {
+            opacity: .4;
+        }
     }
     & input {
-        height: auto;
-        width: 60vw;
+        height: 3vw;
+        width: 45vw;
+        margin-bottom: 1.5vh;
     }
 }
 
