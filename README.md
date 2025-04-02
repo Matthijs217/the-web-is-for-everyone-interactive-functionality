@@ -44,6 +44,8 @@ Voor deze site is er gebruik gemaakt van Liquid, CSS, Javascript en Node.JS. Ik 
 - De server maakt een api call naar de vacature database van DDA. zie dat [hier](https://github.com/Matthijs217/the-web-is-for-everyone-interactive-functionality/blob/main/server.js#L36-L40)
 - De data word door gegeven aan de liquid template. zie dat [hier](https://github.com/Matthijs217/the-web-is-for-everyone-interactive-functionality/blob/main/server.js#L45)
 - Liquid gebruikt de data uit de server. zie dat [hier](https://github.com/Matthijs217/the-web-is-for-everyone-interactive-functionality/blob/main/views/vacatures.liquid#L79-L94)
+- Liquid post het formulier weer naar de server. zie dat [hier](https://github.com/Matthijs217/the-web-is-for-everyone-interactive-functionality/blob/main/views/vacatures.liquid#L98)
+- De server verwerkt dat weer en stuurt het door naar de database. zie dat [hier](https://github.com/Matthijs217/the-web-is-for-everyone-interactive-functionality/blob/main/server.js#L72-L92)
 
 ## Installatie
 <!-- Bij Installatie staat hoe een andere developer aan jouw repo kan werken -->
