@@ -38,7 +38,12 @@ Je kan met deze interactie zelf een vacature toevoegen. Deze komt dan ook in het
 ## Kenmerken
 <!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framework of library gebruikt? -->
 
-Voor deze site is er gebruik gemaakt van Liquid, CSS, Javascript en Node.JS. Ik heb in liquid de loop ingeladen van alle vacatures. Met CSS de pagina gestyled. Met JavaScript heb ik ervoor gezorgd dat er een melding word getoond en weer verdwijnd na het toevoegen van de vacature.
+Voor deze site is er gebruik gemaakt van Liquid, CSS, Javascript en Node.JS. Ik heb in liquid de loop ingeladen van alle vacatures. Met CSS de pagina gestyled. Met JavaScript heb ik ervoor gezorgd dat er een melding word getoond en weer verdwijnd na het toevoegen van de vacature. NodeJS voor alle back-end. Om de api te gebruiken, te verwerken en renderen.
+
+**data en database**
+- De server maakt een api call naar de vacature database van DDA. zie dat [hier](https://github.com/Matthijs217/the-web-is-for-everyone-interactive-functionality/blob/main/server.js#L36-L40)
+- De data word door gegeven aan de liquid template. zie dat [hier](https://github.com/Matthijs217/the-web-is-for-everyone-interactive-functionality/blob/main/server.js#L45)
+- Liquid gebruikt de data uit de server. zie dat [hier](https://github.com/Matthijs217/the-web-is-for-everyone-interactive-functionality/blob/main/views/vacatures.liquid#L79-L94)
 
 ## Installatie
 <!-- Bij Installatie staat hoe een andere developer aan jouw repo kan werken -->
