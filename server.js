@@ -28,7 +28,6 @@ app.get('/', async function (request, response) {
   let vacaturesResponseJSON
 
   const hours = request.query.hours
-  console.log(hours)
 
   if (hours === "16" || hours === "32" || hours === "40") {
     const vacaturesResponse = await fetch(`https://fdnd-agency.directus.app/items/dda_agencies?fields=id,title,vacancies.*&filter={%22vacancies%22:{%22hours%22:${hours}}}`)

@@ -95,8 +95,9 @@
     </ul>
     <details class="add-vacancie">
         <summary>Vacature toevoegen</summary>
-        <form class="form-container" action="/" method="post">
-            <button>close</button>
+        <form class="form-container" action="/" method="post" data-enhanced="form-{{ id }}">
+            <button class="close-btn">close</button>
+
             <label for="titel">titel</label>
             <input required type="text" name="title">
 
@@ -124,6 +125,7 @@
 </main>
 
 <script type="module">
+
 // We maken hieronder aannames over wat de browser ondersteunt
 // Dus laten we deze eerst testen met Feature Detection
 // https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Testing/Feature_detection
@@ -135,13 +137,14 @@ if ('fetch' in window && 'DOMParser' in window) {
 
     // Hou in een variabele bij welk formulier dat was
     const form = event.target
-    const button = form.querySelector('button')
+    const button = document.querySelector('.submit')
 
     // Als dit formulier geen data-enhanced attribuut heeft, doe dan niks
     // Dit doen we, zodat we sommige formulieren op de pagina kunnen 'enhancen'
     // Data attributen mag je zelf verzinnen; dit is dus niet iets speciaals
     // https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Solve_HTML_problems/Use_data_attributes
     if (!form.hasAttribute('data-enhanced')) {
+        
       return
     }
 
@@ -150,6 +153,7 @@ if ('fetch' in window && 'DOMParser' in window) {
     event.preventDefault()
 
     button.classList.add('loading')
+    button.textContent = "Laden...";
 
     // Doe een fetch naar de server, net als hoe de browser dit normaal zou doen
     // Gebruik daarvoor het action en method attribuut van het originele formulier
@@ -177,8 +181,29 @@ if ('fetch' in window && 'DOMParser' in window) {
     // Hier wil je waarschijnlijk de Loading state vervangen door een Success state
     form.outerHTML = newState.outerHTML
 
+    button.classList.remove('loading')
+    button.textContent = "verstuurd";
+
+
   })
 }
+
+const details = document.querySelector('details')
+const closeBtn = document.querySelector('.close-btn')
+
+closeBtn.addEventListener('click', function(e){
+    details.removeAttribute('open')
+})
+
+document.addEventListener('click', function(e){
+    if(!details.contains(e.target)){
+        details.removeAttribute('open')
+        console.log('closed')
+    }
+})
+
+
+
 </script>
 
 {% render 'partials/footer.liquid' %}
