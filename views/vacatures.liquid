@@ -8,8 +8,8 @@
         terug naar home
     </a>
     <h1>Vacatures</h1>
-    <dd>Verslim je carrière bij de beste digitale bureaus van Nederland. Pak je rol als developer of designer,
-        researcher, als scrum master of marketeer, als strateeg. Start of groei door – en laat zien wat je kan.</dd>
+    <p>Verslim je carrière bij de beste digitale bureaus van Nederland. Pak je rol als developer of designer,
+        researcher, als scrum master of marketeer, als strateeg. Start of groei door – en laat zien wat je kan.</p>
 </aside>
 
 <form class="filter-button-container" method="get" action="/">
@@ -34,7 +34,7 @@
                 <option value="Noord-Brabant">Noord-Brabant</option>
                 <option value="Zeeland">Zeeland</option>
             </select>
-            <span><img src="assets/plus.svg"></span>
+            <span><img src="assets/plus.svg" alt="plus-icon"></span>
         </div>
 
         <div class="select-container">
@@ -42,9 +42,9 @@
                 <option value="">soort</option>
                 <option value="vacature">vacature</option>
                 <option value="stage">stage</option>
-                <span><img src="assets/plus.svg"></span>
+                <span><img src="assets/plus.svg" alt="plus-icon"></span>
             </select>
-            <span><img src="assets/plus.svg"></span>
+            <span><img src="assets/plus.svg" alt="plus-icon"></span>
         </div>
 
         <div class="select-container">
@@ -54,9 +54,9 @@
                 <option value="32">32</option>
                 <option value="16">16</option>
                 <option value="anders">anders</option>
-                <span><img src="assets/plus.svg"></span>
+                <span><img src="assets/plus.svg" alt="plus-icon"></span>
             </select>
-            <span><img src="assets/plus.svg"></span>
+            <span><img src="assets/plus.svg" alt="plus-icon"></span>
         </div>
 
         <div class="select-container">
@@ -65,9 +65,9 @@
                 <option value="nl">nl</option>
                 <option value="eng">eng</option>
                 <option value="eng-nl">eng & nl</option>
-                <span><img src="assets/plus.svg"></span>
+                <span><img src="assets/plus.svg" alt="plus-icon"></span>
             </select>
-            <span><img src="assets/plus.svg"></span>
+            <span><img src="assets/plus.svg" alt="plus-icon"></span>
         </div>
 
         <button type="submit">Submit</button>
@@ -86,7 +86,7 @@
                 <span>{{ vacature.hours }} uur</span>
                 <span>{{ vacature.locatie }}</span>
             </div>
-            <a href="vacature/{{ vacature.id }}">bekijken <img src="assets/blue-arrow-up.svg"></a>
+            <a href="vacature/{{ vacature.id }}">bekijken <img src="assets/blue-arrow-up.svg" alt="pijltje"></a>
         </li>
         {% endfor %}
         {% else %}

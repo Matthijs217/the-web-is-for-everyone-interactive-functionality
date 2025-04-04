@@ -104,7 +104,7 @@ aside {
             color: var(--blue);
         }
     }
-    & dd {
+    & p {
         margin-top: var(--spacing-16);
         text-align: center;
     }
@@ -295,7 +295,7 @@ footer {
         @media (min-width: 650px){
             display: flex;
             flex-direction: row;
-            & dd {
+            & p {
                 margin-left: auto;
             }
         }
@@ -323,7 +323,7 @@ footer {
     font-size: 2rem;
     color: var(--black);
     padding: var(--spacing-64) var(--spacing-16);
-    & dd {
+    & p {
         margin-top: var(--spacing-16);
         font-size: var(--size-sm);
         line-height: 1.5rem;
