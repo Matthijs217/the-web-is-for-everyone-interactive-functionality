@@ -19,6 +19,7 @@
     </div>
     <div class="filter-btns">
         <div class="select-container">
+            <label hidden for="titel">provincie</label>
             <select class="select-btn" name="provincie">
                 <option value="">provincie</option>
                 <option value="Noord-Holland">Noord-Holland</option>
@@ -38,6 +39,7 @@
         </div>
 
         <div class="select-container">
+
             <select name="soort">
                 <option value="">soort</option>
                 <option value="vacature">vacature</option>
@@ -48,6 +50,7 @@
         </div>
 
         <div class="select-container">
+            <label hidden for="titel">uren</label>
             <select name="hours">
                 <option value="">uren</option>
                 <option value="40">40</option>
@@ -60,6 +63,7 @@
         </div>
 
         <div class="select-container">
+            <label hidden for="titel">voertaal</label>
             <select name="voertaal">
                 <option value="">voertaal</option>
                 <option value="nl">nl</option>
@@ -79,7 +83,7 @@
         {% for agency in vacatures %}
         {% for vacature in agency.vacancies %}
         <li>
-            <h4>{{ vacature.title }}</h4>
+            <h2>{{ vacature.title }}</h2>
             <div>
                 <span>ENG & NL</span>
                 <span class="agency-title">{{ agency.title|title }}</span>
